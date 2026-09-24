@@ -1,0 +1,36 @@
+.page { max-width: 1040px; margin: auto; }
+.back { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); text-decoration: none; font-size: 12px; margin-bottom: 32px; }
+.back:hover { color: var(--accent); }
+.eyebrow { font-size: 10px; letter-spacing: 1.6px; color: var(--muted); }
+.page h1 { font-size: clamp(28px, 3vw, 40px); letter-spacing: -1.4px; font-weight: 550; margin: 14px 0; }
+.page h1 span { color: var(--accent); }
+.subtitle { font-size: 13px; line-height: 1.7; color: var(--muted); margin-bottom: 32px; }
+.layout { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(220px, 1fr); gap: 24px; align-items: start; }
+.form { border: 1px solid var(--border); border-radius: 16px; background: white; padding: 30px; }
+.formHeader { display: flex; gap: 14px; align-items: center; margin-bottom: 28px; }
+.icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; color: var(--primary-ink); background: var(--surface-soft); }
+.formHeader h2 { font-size: 18px; margin: 0 0 6px; font-weight: 550; }
+.formHeader p { font-size: 11px; color: var(--muted); margin: 0; }
+.form fieldset { padding: 0; border: 0; margin: 0; min-width: 0; }
+.form label { display: block; font-size: 12px; font-weight: 600; margin: 22px 0 9px; }
+.form input:not([type="checkbox"]), .form select { width: 100%; min-height: 44px; border: 1px solid var(--slate); padding: 11px 13px; border-radius: 8px; background: var(--surface); color: var(--ink); font-size: 13px; transition: border-color 150ms ease; }
+.form input[aria-invalid="true"], .form select[aria-invalid="true"] { border-color: var(--danger-ink); }
+.fieldError { color: var(--danger-ink); font-size: 12px; line-height: 1.5; margin: 7px 0 0; }
+.form .status { display: flex; align-items: center; gap: 12px; padding: 16px; background: var(--canvas); border-radius: 9px; margin-top: 26px; cursor: pointer; }
+.status input { width: 18px; height: 18px; accent-color: var(--accent); }
+.status small { display: block; font-size: 11px; color: var(--muted); font-weight: 400; margin-top: 5px; }
+.actions { display: flex; justify-content: space-between; gap: 12px; margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--border); }
+.actions button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px; padding: 10px 16px; border-radius: 8px; border: 1px solid var(--border); background: white; color: var(--ink); cursor: pointer; font-size: 12px; }
+.actions button[type="submit"] { background: var(--primary-ink); color: white; border-color: var(--primary); }
+.actions button:hover:not(:disabled) { box-shadow: 0 3px 12px color-mix(in srgb, var(--ink) 12.5%, transparent); }
+.actions button:disabled, .form fieldset:disabled { opacity: .65; cursor: wait; }
+.note { padding: 28px; border-radius: 16px; background: var(--surface-soft); border: 1px solid var(--border); }
+.note h2 { font-size: 29px; font-weight: 450; line-height: 1.2; letter-spacing: -.8px; }
+.note p { font-size: 12px; color: var(--muted); line-height: 1.8; }
+.note > div { border-top: 1px solid var(--border); margin-top: 45px; padding-top: 23px; }
+.note strong { font-size: 12px; font-weight: 600; }
+.alert { padding: 13px; border-radius: 8px; color: var(--danger-ink); background: var(--danger-soft); font-size: 12px; line-height: 1.6; }
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .note > div { margin-top: 24px; } }
+@media (max-width: 500px) { .form, .note { padding: 21px; } }
+@media (prefers-reduced-motion: reduce) { .form input:not([type="checkbox"]), .form select { transition: none; } }
+.draftStatus { margin: 24px 0 12px; padding: 12px 15px; border-left: 3px solid var(--blue); border-radius: 6px; background: var(--canvas); color: var(--muted); font-size: 12px; line-height: 1.6; }

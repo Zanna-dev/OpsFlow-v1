@@ -1,0 +1,11 @@
+.notification { display: flex; align-items: flex-start; gap: 12px; padding: 17px; border: 1px solid var(--success-border); border-radius: 14px; background: var(--success-soft); color: var(--success-ink); box-shadow: 0 12px 40px color-mix(in srgb, var(--ink) 8.2%, transparent); }
+.floating { position: fixed; z-index: 30; top: 96px; right: 24px; width: min(400px, calc(100vw - 32px)); animation: arrive 200ms ease-out; }
+.icon { font-size: 20px; padding-top: 2px; }
+.notification strong { font-size: 13px; }
+.notification p { font-size: 12px; line-height: 1.6; margin: 5px 0 0; overflow-wrap: anywhere; }
+.notification button { display: grid; place-items: center; flex-shrink: 0; margin-left: auto; border: 0; border-radius: 7px; width: 32px; height: 32px; cursor: pointer; background: color-mix(in srgb, var(--success-ink) 4.7%, transparent); color: inherit; }
+.notification button:hover { background: color-mix(in srgb, var(--success-ink) 12.5%, transparent); }
+.notification[data-tone="error"] { background: var(--danger-soft); border-color: var(--danger-border); color: var(--danger-ink); }
+@keyframes arrive { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 760px) { .floating { top: auto; bottom: 20px; right: 16px; } }
+@media (prefers-reduced-motion: reduce) { .floating { animation: none; } }

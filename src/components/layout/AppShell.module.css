@@ -1,0 +1,95 @@
+.shell { display: grid; grid-template-columns: 244px minmax(0, 1fr); min-height: 100vh; }
+.sidebar { background: var(--brand-gradient); color: var(--surface); padding: 34px 22px 22px; display: flex; flex-direction: column; position: sticky; top: 0; height: 100dvh; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--muted) transparent; }
+.brand { display: flex; align-items: center; gap: 10px; font-size: 29px; font-weight: 750; letter-spacing: -1.4px; text-decoration: none; color: inherit; }
+.brandDot { color: var(--border-strong); margin-left: -10px; }
+.mark { display: grid; place-items: center; width: 34px; height: 34px; background: var(--surface-soft); color: var(--primary-ink); border-radius: 10px; font-size: 21px; }
+.workspace { display: flex; align-items: center; gap: 10px; padding: 16px 10px; border: 1px solid var(--ink-soft); border-radius: 12px; margin-top: 35px; font-size: 12px;  border-color: color-mix(in srgb, var(--border-strong) 35%, transparent);}
+.workspaceIcon { background: color-mix(in srgb, var(--blue) 30%, transparent); padding: 9px 12px; border-radius: 8px; }
+.workspace small, .identity small { display: block; color: var(--border); font-size: 10px; margin-top: 5px; }
+.navLabel { font-size: 10px; color: var(--border-strong); letter-spacing: 1.8px; margin: 34px 12px 14px; }
+.navItem, .future { min-height: 44px; display: flex; align-items: center; gap: 12px; padding: 13px; margin: 5px 0; border-radius: 9px; font-size: 13px; text-decoration: none; color: var(--border); }
+.active { background: var(--primary-ink); color: var(--surface); box-shadow: inset 3px 0 0 var(--tint); }
+.navItem span, .future small { margin-left: auto; font-size: 10px; }
+.future { color: var(--slate); }
+.sidebarNote { position: relative; margin-top: auto; padding: 32px 12px; overflow: hidden; }
+.sidebarNote .sidebarTagline { font-size: 25px; font-weight: 500; letter-spacing: -1px; position: relative; }
+.sidebarNote p { font-size: 12px; line-height: 1.7; color: var(--border); max-width: 155px; }
+.orbit { display: block; width: 110px; height: 65px; border: 1px solid var(--muted); border-radius: 50%; transform: rotate(-30deg); margin: 20px 0 25px; box-shadow: 8px 8px 0 -1px var(--ink), 8px 8px 0 0 var(--ink-soft); }
+.identity { display: flex; align-items: center; gap: 9px; border-top: 1px solid var(--ink-soft); padding-top: 20px; font-size: 11px; }
+.identity > span { background: var(--ink-soft); border-radius: 50%; padding: 10px; font-size: 10px; }
+.body { min-width: 0;  background: radial-gradient(ellipse at 95% 0%, var(--tint), transparent 48%), var(--canvas);}
+.topbar { position: sticky; top: 0; z-index: 5; flex-shrink: 0; height: 82px; padding: 0 42px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); font-size: 11px; color: var(--muted); }
+.topbar strong { font-weight: 500; color: var(--ink); }
+.slash { margin: 0 16px; color: var(--slate); }
+.demo { display: flex; align-items: center; gap: 7px; font-size: 10px; }
+.demo i { width: 6px; height: 6px; background: var(--success); border-radius: 50%; }
+.main { padding: 42px; max-width: 1500px; margin: auto; }
+.footer { display: flex; justify-content: space-between; padding: 22px 42px; color: var(--border); font-size: 9px; letter-spacing: 1px;  background: var(--brand-gradient);}
+.footer span { letter-spacing: 0; }
+.skip { position: fixed; left: 12px; top: -100px; background: white; padding: 12px; z-index: 10; }
+.skip:focus { top: 12px; }
+@media (max-width: 1100px) { .shell { grid-template-columns: 210px minmax(0, 1fr); } .main { padding: 28px; } .topbar { padding: 0 28px; } }
+@media (max-width: 760px) { .shell { display: block; } .sidebar { position: static; height: auto; overflow: visible; padding: 18px 22px; } .brand { font-size: 24px; } .workspace, .navLabel, .sidebarNote, .identity, .future { display: none; } .sidebar nav { margin-top: 12px; } .navItem { padding: 9px 12px; } .topbar { height: 58px; padding: 0 22px; } .topbar > span:first-child { display: none; } .main { padding: 26px 18px; } .footer { padding: 20px; } }
+
+/* Shell interaction and visual treatment */
+.shell { transition: grid-template-columns 220ms ease; }
+.sidebar { background: var(--brand-gradient);  color: var(--surface);}
+.sidebarHeader { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.brand { font-size: 25px; gap: 8px; }
+.brandDot { margin-left: 0;  color: var(--border-strong);}
+.toggle { display: grid; place-items: center; width: 44px; height: 44px; flex-shrink: 0; border: 1px solid var(--muted); border-radius: 8px; background: color-mix(in srgb, var(--surface) 3.1%, transparent); color: var(--surface-soft); cursor: pointer; }
+.toggle:hover { background: color-mix(in srgb, var(--surface) 9.4%, transparent); }
+.navItem .navText, .future .navText { margin-left: 0; font-size: 13px; }
+.navItem .navCount { margin-left: auto; }
+.body { display: flex; flex-direction: column; background: radial-gradient(ellipse at 95% 0%, var(--tint), transparent 48%), var(--canvas); }
+.main { width: 100%; flex: 1; }
+.topbar {
+  background: linear-gradient(110deg, color-mix(in srgb, var(--canvas) 90.2%, transparent), color-mix(in srgb, var(--canvas) 90.2%, transparent) 70%, color-mix(in srgb, var(--tint) 90%, transparent));
+  border-bottom: 1px solid color-mix(in srgb, var(--surface) 65.1%, transparent);
+  color: var(--muted);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--muted) 7.8%, transparent), 0 8px 28px -16px color-mix(in srgb, var(--ink) 22.0%, transparent);
+}
+@supports ((backdrop-filter: blur(20px)) or (-webkit-backdrop-filter: blur(20px))) {
+  .topbar {
+    background: linear-gradient(110deg, color-mix(in srgb, var(--canvas) 60.0%, transparent), color-mix(in srgb, var(--canvas) 54.9%, transparent) 70%, color-mix(in srgb, var(--tint) 60%, transparent));
+    -webkit-backdrop-filter: blur(20px) saturate(145%);
+    backdrop-filter: blur(20px) saturate(145%);
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .topbar { background: var(--canvas); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+.topbar strong { color: var(--ink); }
+.demo { padding: 9px 12px; background: color-mix(in srgb, var(--surface) 56.5%, transparent); border: 1px solid var(--success-border); border-radius: 999px; color: var(--success-ink); }
+.footer { align-items: center; gap: 16px; background: var(--brand-gradient); color: var(--border); border-top: 1px solid var(--ink-soft); }
+.footerBrand { display: inline-flex; align-items: center; gap: 8px; color: var(--surface); font-weight: 650; }
+.footerBrand svg { font-size: 16px; }
+.footerAccent { display: inline-flex; align-items: center; gap: 8px; color: var(--border); }
+.shell.collapsed { grid-template-columns: 84px minmax(0, 1fr); }
+.collapsed .sidebar { padding: 26px 14px; }
+.collapsed .sidebarHeader { flex-direction: column; gap: 20px; }
+.collapsed .brandText, .collapsed .workspace, .collapsed .navLabel, .collapsed .sidebarNote, .collapsed .identity, .collapsed .navCount, .collapsed .future small { display: none; }
+.collapsed .navText { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.collapsed .sidebar nav { margin-top: 30px; }
+.collapsed .navItem, .collapsed .future { justify-content: center; padding: 15px 10px; font-size: 18px; }
+@media (max-width: 760px) {
+  .sidebarHeader, .collapsed .sidebarHeader { flex-direction: row; }
+  .collapsed .brandText { display: inline; }
+  .collapsed .sidebar { padding: 18px 22px; }
+  .collapsed .sidebar nav { display: none; }
+  .topbar > span:first-child { display: none; }
+  .footer { flex-wrap: wrap; }
+  .footerAccent { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .shell { transition: none; } }
+
+
+.sidebarHeader, .workspace, .identity, .sidebar nav { flex-shrink: 0; }
+.sidebarNote { flex-shrink: 0; }
+@media (min-width: 761px) and (max-height: 760px) { .sidebarNote { display: none; } .identity { margin-top: auto; } }
+
+@media (min-width: 761px) and (max-width: 1100px) { .sidebar { padding-inline: 14px; } }
+.topbar { height: auto; min-height: 82px; padding-block: 12px; gap: 18px; flex-wrap: wrap; }
+@media (max-width: 760px) { .topbar { min-height: 58px; } }
+
+.sidebar :focus-visible { outline-color: var(--tint); }

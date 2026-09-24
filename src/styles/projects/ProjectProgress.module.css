@@ -1,0 +1,11 @@
+.progress { margin-top: 20px; padding: 16px; background: var(--feature-gradient); border: 1px solid var(--border); border-radius: 12px; min-width: 180px; }
+.progress > div { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.progress span { font-size: 12px; color: var(--muted); }
+.progress strong { font-size: 25px; font-weight: 550; color: var(--primary-ink); }
+.progress progress { width: 100%; height: 8px; display: block; margin: 12px 0; border: 0; border-radius: 8px; overflow: hidden; background: var(--surface-soft); accent-color: var(--primary); }
+.progress progress::-webkit-progress-bar { background: var(--surface-soft); }
+.progress progress::-webkit-progress-value { background: var(--primary-ink); }
+.progress progress::-moz-progress-bar { background: var(--primary-ink); }
+.progress small { display: block; color: var(--muted); font-size: 10px; margin-top: 8px; }
+.progress a { display: inline-block; padding: 10px 0 2px; font-size: 11px; color: var(--primary-ink); text-decoration: none; }
+.progress a:hover { text-decoration: underline; }

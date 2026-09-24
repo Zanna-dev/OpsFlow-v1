@@ -1,0 +1,19 @@
+.scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 15px; background: var(--surface); }
+.scroll:focus-visible { outline: 3px solid var(--primary); outline-offset: 4px; }
+.table { width: 100%; border-collapse: collapse; text-align: left; font-size: 12px; }
+.table thead { background: var(--canvas); color: var(--muted); }
+.table thead th { padding: 16px 18px; font-size: 10px; text-transform: uppercase; letter-spacing: .6px; white-space: nowrap; }
+.table tbody th, .table td { padding: 20px 18px; border-top: 1px solid var(--surface-soft); vertical-align: middle; }
+.table tbody tr:hover { background: var(--surface); }
+.table tbody th { min-width: 220px; max-width: 300px; font-weight: 500; overflow-wrap: anywhere; }
+.table tbody th strong { display: block; margin-top: 8px; font-size: 13px; font-weight: 600; }
+.code { font-size: 10px; color: var(--muted); letter-spacing: .7px; }
+.status { display: inline-block; padding: 6px 9px; background: var(--surface-soft); color: var(--primary-ink); border-radius: 6px; font-size: 11px; }
+.status[data-status="active"] { background: var(--success-soft); color: var(--success-ink); }
+.status[data-status="completed"] { background: var(--canvas); color: var(--primary-ink); }
+.status[data-status="cancelled"] { background: var(--danger-soft); color: var(--danger-ink); }
+.priority { color: var(--muted); }
+.priority[data-priority="high"] { color: var(--warning-ink); }
+.priority[data-priority="critical"] { color: var(--danger-ink); }
+.date { white-space: nowrap; }
+.actions { min-width: 425px; }

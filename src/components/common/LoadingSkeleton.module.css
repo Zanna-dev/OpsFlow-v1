@@ -1,0 +1,11 @@
+.skeleton { padding: 24px 0; }
+.heading, .avatar, .lines span, .badge { background: var(--surface-soft); animation: breathe 1.6s ease-in-out infinite alternate; }
+.heading { width: 42%; height: 18px; border-radius: 5px; margin-bottom: 24px; }
+.row { display: flex; align-items: center; gap: 14px; padding: 19px 15px; border: 1px solid var(--surface-soft); border-radius: 10px; margin-bottom: 10px; }
+.avatar { width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0; }
+.lines { flex: 1; display: grid; gap: 10px; }
+.lines span { display: block; width: 60%; height: 12px; border-radius: 4px; }
+.lines span + span { width: 80%; height: 9px; }
+.badge { width: 50px; height: 22px; border-radius: 5px; }
+@keyframes breathe { to { opacity: .45; } }
+@media (prefers-reduced-motion: reduce) { .heading, .avatar, .lines span, .badge { animation: none; } }

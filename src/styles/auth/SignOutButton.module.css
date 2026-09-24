@@ -1,0 +1,4 @@
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 9px 14px; border: 1px solid var(--muted); border-radius: 10px; background: var(--surface-soft); color: var(--ink); font: inherit; font-size: 12px; font-weight: 650; cursor: pointer; white-space: nowrap; }
+.button:hover:not(:disabled) { background: var(--border); }
+.button:focus-visible { outline: 3px solid var(--primary-hover); outline-offset: 3px; }
+.button:disabled { opacity: .55; cursor: not-allowed; }
