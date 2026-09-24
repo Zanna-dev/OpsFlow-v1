@@ -3,7 +3,7 @@
 .topline { display: flex; justify-content: space-between; gap: 12px; position: relative; font-size: 8px; letter-spacing: 1.5px; color: var(--border); line-height: 1.8; }
 .edition { white-space: nowrap; }
 .stage { display: grid; align-items: center; flex: 1; min-height: 430px; padding: 42px 0; position: relative; }
-.visual { position: relative; width: 100%; max-width: 590px; margin: auto; animation: rise 450ms ease both; }
+.visual { position: relative; width: 100%; max-width: 590px; margin: auto;  }
 .window { border: 1px solid color-mix(in srgb, var(--slate) 36.1%, transparent); border-radius: 15px; overflow: hidden; background: var(--canvas); color: var(--ink); box-shadow: 0 32px 80px color-mix(in srgb, var(--ink) 50.2%, transparent); transform: perspective(1300px) rotateY(-7deg) rotateX(3deg); }
 .windowBar { display: flex; align-items: center; justify-content: space-between; height: 45px; padding: 0 18px; border-bottom: 1px solid var(--surface-soft); background: var(--surface); }
 .miniBrand { display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 750; letter-spacing: -.5px; }
@@ -53,17 +53,8 @@
 .eyebrow { font-size: 9px; letter-spacing: 2px; color: var(--border); margin: 0 0 14px; }
 .caption h2 { font-size: clamp(26px, 2.6vw, 38px); letter-spacing: -1px; font-weight: 450; line-height: 1.15; margin: 0 0 15px; }
 .caption > p:last-child { font-size: 13px; line-height: 1.8; color: var(--border); max-width: 380px; }
-.controls { display: flex; align-items: center; justify-content: space-between; gap: 15px; position: relative; margin-top: 14px; }
-.dots, .transport { display: flex; align-items: center; gap: 4px; }
-.controls button { display: grid; place-items: center; min-width: 44px; min-height: 44px; border: 1px solid color-mix(in srgb, var(--muted) 32.9%, transparent); border-radius: 50%; background: color-mix(in srgb, var(--surface) 3.1%, transparent); color: var(--surface-soft); cursor: pointer; }
-.controls button:hover { background: color-mix(in srgb, var(--surface) 9.8%, transparent); }
-.controls button:disabled { opacity: .5; cursor: default; }
-.dots button { border: 0; background: transparent; }
-.dots span { width: 7px; height: 7px; background: var(--border-strong); border-radius: 10px; }
-.dots button[aria-pressed="true"] span { width: 23px; background: var(--surface); }
 .illustrative { font-size: 9px; color: var(--border); letter-spacing: .4px; margin: 16px 0 0; }
-@keyframes rise { from { opacity: 0; translate: 0 14px; } to { opacity: 1; translate: 0 0; } }
-.panel[data-playing="false"] .visual { animation: none; }
+
 @media (max-width: 1199px) { .panel { padding: 35px 24px 22px; } .edition { display: none; } .mockContent { padding: 16px; } .mockNav { display: none; } .floating { padding: 13px; } .bars { gap: 8px; } }
 @media (max-width: 767px) { .panel { display: none; } }
 @media (prefers-reduced-motion: reduce) { .visual { animation: none; } .window, .floating { transform: none; } }
@@ -76,7 +67,6 @@
   .stats strong { font-size: 23px; }
   .timeline { flex-wrap: wrap; }
   .timeline i { display: none; }
-  .controls { gap: 4px; flex-wrap: wrap; }
   .floating { margin-right: 0; max-width: 100%; }
   .caption h2 { font-size: 26px; }
 }
@@ -92,7 +82,6 @@
   .caption > p:last-child { font-size: 12px; line-height: 1.5; margin-bottom: 0; }
   .eyebrow { margin-bottom: 8px; }
   .floating { padding: 10px 12px; }
-  .controls { margin-top: 10px; }
   .illustrative { margin-top: 8px; }
 }
 @media (max-height: 650px) and (min-width: 768px) {
@@ -101,3 +90,14 @@
 }
 
 .panel :focus-visible { outline: 3px solid var(--tint); outline-offset: 3px; }
+/* Mounted layers crossfade together without remounting or shifting the layout. */
+.captions { display: grid; position: relative; }
+.sceneLayer { grid-area: 1 / 1; min-width: 0; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 1000ms cubic-bezier(.4, 0, .2, 1), visibility 0s linear 1000ms; }
+.sceneLayer[data-active="true"] { opacity: 1; visibility: visible; transition-delay: 0s; }
+.sequence { display: flex; gap: 7px; margin-top: 20px; height: 4px; }
+.sequence > span { width: 18px; border-radius: 4px; background: color-mix(in srgb, var(--surface) 25%, transparent); transition: width 1000ms cubic-bezier(.4, 0, .2, 1), background 1000ms ease; }
+.sequence > span[data-active="true"] { width: 40px; background: var(--tint); }
+@media (prefers-reduced-motion: reduce) {
+  .sceneLayer, .sequence > span { transition: none; transform: none; }
+}
+

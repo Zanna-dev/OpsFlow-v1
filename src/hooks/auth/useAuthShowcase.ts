@@ -7,13 +7,13 @@ function subscribeVisibility(notify: () => void) {
 }
 export function useAuthShowcase() {
   const [scene, setScene] = useState(0);
-  const [paused, setPaused] = useState(false);
+
   const [visible, setVisible] = useState(false);
   const panelRef = useRef<HTMLElement>(null);
   const reducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
   const wide = useMediaQuery("(min-width: 768px)");
   const documentVisible = useSyncExternalStore(subscribeVisibility, () => !document.hidden, () => false);
-  const playing = !paused && !reducedMotion && wide && visible && documentVisible;
+  const playing = !reducedMotion && wide && visible && documentVisible;
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting));
     if (panelRef.current) observer.observe(panelRef.current);
@@ -21,9 +21,11 @@ export function useAuthShowcase() {
   }, []);
   useEffect(() => {
     if (!playing) return;
-    const timer = window.setInterval(() => setScene((value) => (value + 1) % authScenes.length), 6000);
+    const timer = window.setInterval(() => setScene((value) => (value + 1) % authScenes.length), 4000);
     return () => window.clearInterval(timer);
   }, [playing]);
-  function select(index: number) { setPaused(true); setScene((index + authScenes.length) % authScenes.length); }
-  return { panelRef, scene, playing, reducedMotion, select, pause: () => setPaused(true), toggle: () => setPaused((value) => !value) };
+
+  return { panelRef, scene, playing };
 }
+
+

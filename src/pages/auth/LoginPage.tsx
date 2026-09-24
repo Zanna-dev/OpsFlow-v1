@@ -24,10 +24,10 @@ export function LoginPage() {
           <h1 id="login-heading">
             Welcome back<span>.</span>
           </h1>
-          <p className={styles.intro}>
+          {/* <p className={styles.intro}>
             Your people. Your projects.
             <br />A clearer view of the work ahead.
-          </p>
+          </p> */}
           <LoginForm />
         </div>
         <footer className={styles.footer}>
